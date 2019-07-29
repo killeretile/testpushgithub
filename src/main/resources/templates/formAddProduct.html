@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::head">
+	<!-- Custom Style -->
+	<link href="" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="container" id="main-content">
+        <div class="row d-flex justify-content-center">
+            <form style="min-width: 300px;" action="#" th:action="@{/admin/save}" 
+             th:object = "${product}" method="post" novalidate="novalidate">
+                <h5 class="text-center">Product form</h5>
+                
+                <input type="hidden" th:field="*{pid}" />
+
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Product name" 
+                    th:field="*{pname}" th:errorclass="field-error" />
+                    <em th:if="${#fields.hasErrors('pname')}" th:errors="*{pname}"></em>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Product image" 
+                    th:field="*{image}" th:errorclass="field-error" />
+                     <em th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></em>
+                    <!-- <button type="button" class="btn btn-outline-info">Upload</button> -->
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="number" placeholder="Product price" 
+                    th:field="*{price}" th:errorclass="field-error" />
+                     <em th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></em>
+                </div>
+                
+                <div class="form-group">
+                    <input class="form-control" type="number" placeholder="Product quantity" 
+                    th:field="*{quantity}" th:errorclass="field-error" />
+                    <em th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></em>
+                </div>
+                
+                <div class="form-group">
+                    <input class="form-control" type="number" placeholder="Product discount" 
+                    th:field="*{discount}"/>
+                </div>
+                
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Product tyle" 
+                    th:field="*{tyle}" th:errorclass="*{tyle}"/>
+                    <em th:if="${#fields.hasErrors('tyle')}" th:errors="*{tyle}"></em>
+                </div>
+				
+				<div class="form-group">
+                    <input class="form-control" type="text" placeholder="Product descrip" 
+                    th:field="*{descrip}"/>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-primary">
+                        <i class="fa fa-save"></i> Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div><!-- /.container -->
+    
+    
+</body>
+</html>

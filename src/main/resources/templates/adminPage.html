@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layoutAdmin :: head"></head>
+<body>
+
+<div class="row">
+	<div class="col-xs-2 col-md-2 col-sm-2 col-lg-2" id="sidebarCol">
+			<div id="sidebar">
+				<div class="toggle-btn">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Quản lý sản phẩm</a></li>
+					<li><a href="#">Quản lý đơn hàng</a></li>
+				</ul>
+			</div>
+	</div>
+	<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10" id="content">
+		<div class="row">
+			<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10">
+				<h1 class="text-center">Quản lý sản phẩm</h1>
+			</div>
+			<div class="col-xs-2 col-md-2 col-sm-2 col-lg-2" id="logout">
+				<a href="#" th:href="@{/logout}">Đăng xuất</a>
+			</div>
+		</div>
+		<div class="col-6 no-padding">
+                <form class="form-inline" action="#" th:action="@{/admin/search}" method="get">
+                    <input class="form-control mr-sm-2" type="search" name = "productName" placeholder="Search by name ..." />
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fa fa-search"></i> Search
+                    </button>
+                </form>
+         </div>
+		<div class="row" id="addProduct">
+			<a href="#" th:href="@{/admin/add}" class="btn btn-success float-left">
+    			<i class="fa fa-plus-square"></i> New Product
+			</a>
+		</div>
+		
+		<!-- Messge Successful -->
+		
+		<div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <span th:text="${successMessage}"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    	</div>
+		<table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>pname</th>
+                        <th>image</th>
+                        <th>price</th>
+                        <th>quantity</th>
+                        <th>discount</th>
+                        <th>tyle</th>
+                        <th>descrip</th>
+                        <th>Ngày tháng năm nhập liệu</th>
+                       <!--  <th>Date</th> -->
+                        <th>manage</th>
+                    </tr>
+                    </thead>
+                    
+                    
+                    <tbody>
+                    <tr th:each="Product,iterStat : ${Products}">
+                        <th scope="row" th:text="${iterStat.count}"></th>
+                        <td th:text="${Product.pname}"></td>
+                        <td><img src="..." th:src="@{'/images/' + ${Product.image}}" style="width:50px; height: 50px"/></td>
+                        <td th:text="${Product.price}"></td>
+                        <td th:text="${Product.quantity}"></td>
+                        <td th:text="${Product.discount}"></td>
+                        <td th:text="${Product.tyle}"></td>
+                        <td th:text="${Product.descrip}"></td>
+                        <td th:text="${Product.upLoadDate}"></td>
+                        <!-- <td></td> -->
+                        <td>
+                            <a href="#"  th:href="@{/admin/{pid}/edit(pid=${Product.pid})}" class="mr-sm-2 text-primary">
+                            	<i class="fa fa-pencil"></i>
+                            </a>
+                            <a href="#"  th:href ="@{/admin/{pid}/delete(pid=${Product.pid})}" class="text-danger">
+                            	<i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+	</div>
+</div>		
+</body>
+</html>

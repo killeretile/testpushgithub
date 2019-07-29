@@ -1,0 +1,37 @@
+#sidebarCol{
+	margin: 0px;
+	padding: 0px;
+	font-family: sans-serif;
+	height: -webkit-fill-available;
+	background: #151719;
+}
+/* #sidebar{
+	position: fixed;
+ 	background: #151719;
+	height: -webkit-fill-available;
+	
+} */
+#sidebar ul li{
+	color: rgba(230,230,230,0.9);
+	list-style: none;
+	padding: 15px 10px;
+	border-bottom: 1px solid rgba(100,100,100,0.3);
+
+}
+#sidebar ul li a:hover{
+	text-decoration: none;
+}
+
+#logout a{
+	margin-top: 15px;
+}
+#logout a:hover{
+	text-decoration: none;
+	
+}
+#addProduct a{
+	margin-left: 30px;
+}
+.table {
+	margin-top: 20px;
+}

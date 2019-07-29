@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::head">
+</head>
+<body>
+		<div th:replace="layout::header"></div>
+		<h3 class="text-center" id="giohang">Giỏ Hàng</h3>
+		<hr/>
+		<div class="row container">
+			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+				<table class="table table-bordered table-hover">
+					<thead>
+					<tr>
+						<th>ID</th>
+						<th>Product</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>Action</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item, iterStat: ${session.cart}">
+							<th th:text="${iterStat.count}"></th>
+							<td>
+								<img src="..." th:src="@{'/images/' + ${item.product.image}}" 
+								style="width:50px; height: 50px" alt="imageProduct"/>
+								<p th:text="${item.product.pname}"></p>
+							</td>
+							<td th:text="${item.product.price}"></td>
+							<td th:text="${item.Iquantity}"></td>
+							<td>
+								<a href="#"  class="mr-sm-2 text-primary" 
+								th:href="@{/cartShopping/{pid}/dropFromCart(pid=${item.product.pid})}">
+									<i class="fa fa-trash" style="color:red"></i>
+								</a>
+							</td> 
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<h5>Thông tin đơn hàng</h5>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Tên Hàng</th>
+							<th>Số lượng</th>
+							
+						</tr>
+					</thead>
+					<tbody> <!-- //th:with="tong=0.0" -->
+						<tr th:each="item, iterStat:${session.cart}">
+							<td th:text="${item.product.pname}"></td>
+							<td th:text="${item.Iquantity}"></td>
+							<!-- <td th:with="tong=${tong} + ${item.Iquantity} * ${item.product.price}"></td> -->
+						</tr>
+					</tbody>
+				</table>
+				<h5 th:text="'Tổng Tiền : '+ ${session.tong} + ' vnđ'"></h5>
+				<button class="btn btn-success btn-lg">Đặt hàng</button>
+			</div>
+		</div>
+		
+</body>
+</html>

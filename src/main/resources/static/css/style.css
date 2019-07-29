@@ -1,0 +1,54 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+	color: #222;
+}
+
+
+
+.navbar{
+	background-color: rgba(44,55,104,0.5) !important;
+}
+.carousel-inner{
+	width: 100%;
+	
+}
+#carouselExampleIndicators{
+	margin-top: 5px;
+}
+
+.title{
+	margin-top: 18px;
+	margin-bottom: 18px;
+}
+.titleNewProduct{
+	background-color: red;
+}
+.titleLaptop{
+	background-color: green;
+}
+.newProduct{
+	color: white;
+	font-size: 30px;
+	font-style: inherit;
+	padding-left: 30px;
+}
+.card-img-top {
+	width: 285px;
+	height: 190px;
+}
+#login li a{
+	margin-left: 15px;
+	color: green;
+}
+#signup li a{
+	color: green;
+}
+
+
+/* =============================Gio hang============================== */
+
+#giohang{
+	margin-top: 25px;
+}
